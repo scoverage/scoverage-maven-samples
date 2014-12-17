@@ -47,7 +47,7 @@ under the License.
 
         <play2.plugin.version>1.0.0-alpha9</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.0.0</scoverage.plugin.version>
+        <scoverage.plugin.version>1.0.1</scoverage.plugin.version>
     </properties>
 
     <modules>
@@ -140,6 +140,13 @@ under the License.
                 <groupId>org.scoverage</groupId>
                 <artifactId>scoverage-maven-plugin</artifactId>
                 <version>${scoverage.plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report> <!--TEST-->
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
         </plugins>
     </reporting>
