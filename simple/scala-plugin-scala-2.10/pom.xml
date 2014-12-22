@@ -31,18 +31,15 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <scala.version>2.10.4</scala.version>
-        <sbt.version>0.13.5</sbt.version>
-
         <scala.plugin.version>3.2.0</scala.plugin.version>
-        <scoverage.plugin.version>1.0.1</scoverage.plugin.version>
+        <scoverage.plugin.version>1.0.2</scoverage.plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
+            <version>2.10.4</version>
         </dependency>
 
         <dependency>
