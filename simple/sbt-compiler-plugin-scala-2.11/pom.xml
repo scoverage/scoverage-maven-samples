@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-Copyright 2014 Grzegorz Slowikowski (gslowikowski at gmail dot com)
+Copyright 2014-2015 Grzegorz Slowikowski (gslowikowski at gmail dot com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.simple</groupId>
     <artifactId>sbt-compiler-plugin-scala-2.11</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SCoverage Maven Samples : Simple : using SBT Compiler Maven Plugin and Scala 2.11</name>
@@ -35,7 +35,7 @@ under the License.
         <sbt.version>0.13.5</sbt.version>
 
         <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.0.2</scoverage.plugin.version>
+        <scoverage.plugin.version>1.0.4</scoverage.plugin.version>
     </properties>
 
     <dependencies>

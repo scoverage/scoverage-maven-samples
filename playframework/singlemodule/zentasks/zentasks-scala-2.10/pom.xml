@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-Copyright 2014 Grzegorz Slowikowski (gslowikowski at gmail dot com)
+Copyright 2014-2015 Grzegorz Slowikowski (gslowikowski at gmail dot com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.play.singlemodule.zentasks</groupId>
     <artifactId>zentasks-scala-2.10</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>play2</packaging>
 
     <name>SCoverage Maven Samples : Play! Framework : SingleModule : Zentasks : Scala 2.10</name>
@@ -42,12 +42,12 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <play2.version>2.3.6</play2.version>
+        <play2.version>2.3.7</play2.version>
         <scala.version>2.10.4</scala.version>
 
         <play2.plugin.version>1.0.0-alpha9</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.0.2</scoverage.plugin.version>
+        <scoverage.plugin.version>1.0.4</scoverage.plugin.version>
     </properties>
 
     <dependencies>

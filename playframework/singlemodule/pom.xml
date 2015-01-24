@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-Copyright 2014 Grzegorz Slowikowski (gslowikowski at gmail dot com)
+Copyright 2014-2015 Grzegorz Slowikowski (gslowikowski at gmail dot com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ under the License.
     <parent>
         <groupId>org.scoverage.scoverage-maven-samples</groupId>
         <artifactId>play</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
