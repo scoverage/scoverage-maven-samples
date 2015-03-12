@@ -63,7 +63,7 @@ under the License.
     </scm>
 
     <properties>
-        <play2.plugin.version>1.0.0-alpha9</play2.plugin.version>
+        <play2.plugin.version>1.0.0-beta1</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
         <scoverage.plugin.version>1.0.5-SNAPSHOT</scoverage.plugin.version>
     </properties>
