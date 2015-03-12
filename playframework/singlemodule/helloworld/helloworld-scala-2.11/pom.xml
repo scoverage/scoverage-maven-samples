@@ -164,7 +164,8 @@ under the License.
                     <artifactId>scoverage-maven-plugin</artifactId>
                     <version>${scoverage.plugin.version}</version>
                     <configuration>
-                        <excludedPackages>views.html.*</excludedPackages>
+                        <!-- uncomment if you don't want templates coverage
+                        <excludedPackages>views.html.*</excludedPackages> -->
                         <excludedFiles>.*?routes_(routing|reverseRouting)</excludedFiles>
                         <highlighting>true</highlighting>
                     </configuration>
