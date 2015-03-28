@@ -3,5 +3,7 @@ scoverage-maven-samples
 
 scoverage-maven-samples
 
+[![Join the chat at https://gitter.im/scoverage/scoverage-maven-samples](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scoverage/scoverage-maven-samples?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/scoverage/scoverage-maven-samples.png)](https://travis-ci.org/scoverage/scoverage-maven-samples)
 
