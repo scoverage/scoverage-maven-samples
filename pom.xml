@@ -71,6 +71,7 @@ under the License.
     <modules>
         <module>aggregation</module>
         <module>different-test-frameworks</module>
+        <module>integration-tests</module>
         <module>playframework</module>
         <module>simple</module>
     </modules>
