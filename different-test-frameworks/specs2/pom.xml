@@ -27,34 +27,6 @@ under the License.
 
     <name>SCoverage Maven Samples : Different Test Frameworks : Specs2</name>
 
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -63,7 +35,7 @@ under the License.
         <sbt.version>0.13.5</sbt.version>
 
         <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.1.0-SNAPSHOT</scoverage.plugin.version>
+        <scoverage.plugin.version>1.1.0</scoverage.plugin.version>
     </properties>
 
     <dependencies>
