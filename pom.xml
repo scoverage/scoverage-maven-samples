@@ -69,6 +69,7 @@ under the License.
     </properties>
 
     <modules>
+        <module>aggregation</module>
         <module>different-test-frameworks</module>
         <module>playframework</module>
         <module>simple</module>
