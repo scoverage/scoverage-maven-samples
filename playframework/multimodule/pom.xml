@@ -170,7 +170,7 @@ under the License.
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <report>report</report> <!--TEST-->
+                            <report>report</report> <!-- select only one report from: report, integration-report and report-only reporters -->
                         </reports>
                     </reportSet>
                 </reportSets>
