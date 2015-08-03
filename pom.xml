@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage</groupId>
     <artifactId>scoverage-maven-samples</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>SCoverage Maven Samples</name>
@@ -35,9 +35,9 @@ under the License.
     </scm>
 
     <properties>
-        <play2.plugin.version>1.0.0-beta2</play2.plugin.version>
+        <play2.plugin.version>1.0.0-beta3</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0-beta5</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.1.0</scoverage.plugin.version>
+        <scoverage.plugin.version>1.1.1</scoverage.plugin.version>
     </properties>
 
     <modules>
