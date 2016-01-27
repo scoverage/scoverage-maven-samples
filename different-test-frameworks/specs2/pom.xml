@@ -34,7 +34,16 @@ under the License.
         <scala.version>2.11.7</scala.version>
         <sbt.version>0.13.5</sbt.version>
 
+        <specs2.version>2.3.13</specs2.version>
+
+        <compiler.plugin.version>3.5</compiler.plugin.version>
+        <project-info-reports.plugin.version>2.8.1</project-info-reports.plugin.version>
+        <site.plugin.version>3.4</site.plugin.version>
+        <surefire.plugin.version>2.19.1</surefire.plugin.version>
+
         <sbt-compiler.plugin.version>1.0.0-beta7</sbt-compiler.plugin.version>
+        <specs2.plugin.version>0.4.4</specs2.plugin.version>
+
         <scoverage.plugin.version>1.2.0-SNAPSHOT</scoverage.plugin.version>
     </properties>
 
@@ -48,7 +57,7 @@ under the License.
         <dependency>
             <groupId>org.specs2</groupId>
             <artifactId>specs2_2.11</artifactId>
-            <version>2.3.13</version>
+            <version>${specs2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -61,7 +70,7 @@ under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <skipMain>true</skipMain>
                     <skip>true</skip>
@@ -85,7 +94,7 @@ under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
@@ -94,7 +103,7 @@ under the License.
             <plugin>
                 <groupId>com.mmakowski</groupId>
                 <artifactId>specs2-maven-plugin</artifactId>
-                <version>0.4.4</version>
+                <version>${specs2.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>test</id>
@@ -121,7 +130,7 @@ under the License.
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.4</version>
+                    <version>${site.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -132,7 +141,7 @@ under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.8.1</version>
+                <version>${project-info-reports.plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>

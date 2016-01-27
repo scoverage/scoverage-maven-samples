@@ -40,6 +40,9 @@ under the License.
     </ciManagement>
 
     <properties>
+        <release.plugin.version>2.5.3</release.plugin.version>
+        <site.plugin.version>3.4</site.plugin.version>
+
         <play2.plugin.version>1.0.0-beta4</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0-beta7</sbt-compiler.plugin.version>
         <scoverage.plugin.version>1.2.0-SNAPSHOT</scoverage.plugin.version>
@@ -77,7 +80,7 @@ under the License.
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
+                    <version>${release.plugin.version}</version>
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                     </configuration>
@@ -86,7 +89,7 @@ under the License.
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.4</version>
+                    <version>${site.plugin.version}</version>
                     <configuration>
                         <skip>true</skip>
                     </configuration>

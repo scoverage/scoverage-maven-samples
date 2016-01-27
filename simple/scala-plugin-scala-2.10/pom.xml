@@ -31,6 +31,15 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <scala.version>2.10.5</scala.version>
+
+        <junit.version>4.12</junit.version>
+
+        <compiler.plugin.version>3.5</compiler.plugin.version>
+        <project-info-reports.plugin.version>2.8.1</project-info-reports.plugin.version>
+        <site.plugin.version>3.4</site.plugin.version>
+        <surefire.plugin.version>2.19.1</surefire.plugin.version>
+
         <scala.plugin.version>3.2.2</scala.plugin.version>
         <scoverage.plugin.version>1.2.0-SNAPSHOT</scoverage.plugin.version>
     </properties>
@@ -39,13 +48,13 @@ under the License.
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.5</version>
+            <version>${scala.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -58,7 +67,7 @@ under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5</version>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <skipMain>true</skipMain> <!-- skip compile -->
                     <skip>true</skip> <!-- skip testCompile -->
@@ -68,7 +77,7 @@ under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${surefire.plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -101,7 +110,7 @@ under the License.
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.4</version>
+                    <version>${site.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -112,7 +121,7 @@ under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.8.1</version>
+                <version>${project-info-reports.plugin.version}</version>
                 <reportSets>
                     <reportSet>
                         <reports>
