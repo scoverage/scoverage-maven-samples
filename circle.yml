@@ -1,0 +1,18 @@
+machine:
+  environment:
+    _JAVA_OPTIONS: "-Xms512m -Xmx1024m -XX:PermSize=64m -XX:MaxPermSize=256m"
+  java:
+    version: oraclejdk6
+
+dependencies:
+  override:
+    - java -XX:+PrintFlagsFinal -version
+    - mvn --version
+    - mvn clean 
+    - mvn test-compile --fail-never --update-snapshots --settings .travis.settings.xml -e
+  cache_directories:
+    - ~/.zinc
+
+test:
+  override: 
+    - mvn verify site --settings .travis.settings.xml -e
