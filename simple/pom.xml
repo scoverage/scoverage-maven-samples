@@ -32,30 +32,11 @@ under the License.
 
     <name>SCoverage Maven Samples : Simple</name>
 
-    <properties>
-        <site.plugin.version>3.4</site.plugin.version>
-    </properties>
-
     <modules>
         <module>sbt-compiler-plugin-scala-2.10</module>
         <module>sbt-compiler-plugin-scala-2.11</module>
         <module>scala-plugin-scala-2.10</module>
         <module>scala-plugin-scala-2.11</module>
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${site.plugin.version}</version>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
 </project>

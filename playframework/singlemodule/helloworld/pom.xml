@@ -32,28 +32,9 @@ under the License.
 
     <name>SCoverage Maven Samples : Play! Framework : SingleModule : Hello World</name>
 
-    <properties>
-        <site.plugin.version>3.4</site.plugin.version>
-    </properties>
-
     <modules>
         <module>helloworld-scala-2.10</module>
         <module>helloworld-scala-2.11</module>
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${site.plugin.version}</version>
-                    <configuration>
-                        <skip>true</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
 </project>
