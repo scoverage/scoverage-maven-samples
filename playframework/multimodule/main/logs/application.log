@@ -1,0 +1,2 @@
+2016-03-31 15:55:41,531 [WARN] from application in specs2.fixed.env1033633101-1 - Logger configuration in conf files is deprecated and has no effect. Use a logback configuration file instead.
+2016-03-31 15:55:43,968 [WARN] from application in specs2.fixed.env-1298086342-1 - Logger configuration in conf files is deprecated and has no effect. Use a logback configuration file instead.

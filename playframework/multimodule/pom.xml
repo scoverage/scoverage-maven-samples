@@ -27,22 +27,11 @@ under the License.
 
     <name>SCoverage Maven Samples : Play! Framework : MultiModule</name>
 
-    <repositories>
-        <repository>
-            <id>typesafe</id>
-            <name>Typesafe - releases</name>
-            <url>https://dl.bintray.com/typesafe/maven-releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <play2.version>2.3.10</play2.version>
+        <play2.version>2.4.6</play2.version>
         <scala.version>2.10.6</scala.version>
 
         <compiler.plugin.version>3.5</compiler.plugin.version>
