@@ -27,11 +27,17 @@ under the License.
 
     <name>SCoverage Maven Samples : Play! Framework : SingleModule : Hello World : Scala 2.11</name>
 
+    <!--
+      'com.typesafe.play:play-specs2_2.11' depends on
+      'org.scalaz.stream:scalaz-stream_2.11:0.7a'
+      and this artifact is not available in Maven central repository yet,
+      see https://github.com/scalaz/scalaz-stream/issues/258
+    -->
     <repositories>
         <repository>
-            <id>typesafe</id>
-            <name>Typesafe - releases</name>
-            <url>https://dl.bintray.com/typesafe/maven-releases/</url>
+            <id>scalaz-bintray</id>
+            <name>Scalaz Bintray - releases</name>
+            <url>https://dl.bintray.com/scalaz/releases/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -42,7 +48,7 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <play2.version>2.3.10</play2.version>
+        <play2.version>2.4.6</play2.version>
         <scala.version>2.11.7</scala.version>
 
         <jar.plugin.version>2.6</jar.plugin.version>
@@ -70,7 +76,14 @@ under the License.
 
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play-test_2.11</artifactId>
+            <artifactId>play-netty-server_2.11</artifactId>
+            <version>${play2.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-specs2_2.11</artifactId>
             <version>${play2.version}</version>
             <scope>test</scope>
         </dependency>
@@ -95,6 +108,9 @@ under the License.
                 <artifactId>play2-maven-plugin</artifactId>
                 <version>${play2.plugin.version}</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <routesGenerator>injected</routesGenerator>
+                </configuration>
             </plugin>
 
             <plugin>

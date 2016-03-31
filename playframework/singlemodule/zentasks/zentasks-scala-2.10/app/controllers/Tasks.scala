@@ -7,15 +7,13 @@ import play.api.data.Forms._
 
 import java.util.{Date}
 
-import anorm._
-
 import models._
 import views._
 
 /**
  * Manage tasks related operations.
  */
-object Tasks extends Controller with Secured {
+class Tasks extends Controller with Secured {
 
   /**
    * Display the tasks panel for this project.

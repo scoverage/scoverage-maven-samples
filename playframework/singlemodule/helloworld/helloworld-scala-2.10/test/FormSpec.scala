@@ -2,18 +2,27 @@ import org.specs2.mutable._
 import org.specs2.runner._
 import org.junit.runner._
 
+import play.api._
+import play.api.i18n._
 import play.api.test._
 import play.api.test.Helpers._
 
 @RunWith(classOf[JUnitRunner])
 class FormSpec extends Specification {
   
-  import controllers.Application.helloForm
+  import controllers.Application
+
+  // -- i18n
+  
+  val conf = Configuration.reference
+  val messages = new DefaultMessagesApi(Environment.simple(), conf, new DefaultLangs(conf))
+  
+  // --
   
   "HelloWorld form" should {
     
     "require all fields" in {
-      val form = helloForm.bind(Map.empty[String,String])
+      val form = new Application(messages).helloForm.bind(Map.empty[String,String])
       
       form.hasErrors must beTrue
       form.errors.size must equalTo(2)
@@ -26,7 +35,7 @@ class FormSpec extends Specification {
     }
     
     "require name" in {
-      val form = helloForm.bind(Map("repeat" -> "10", "color" -> "red"))
+      val form = new Application(messages).helloForm.bind(Map("repeat" -> "10", "color" -> "red"))
       
       form.hasErrors must beTrue
       form.errors.size must equalTo(1)
@@ -46,7 +55,7 @@ class FormSpec extends Specification {
     }
     
     "validate repeat as numeric" in {
-      val form = helloForm.bind(Map("name" -> "Bob", "repeat" -> "xx", "color" -> "red"))
+      val form = new Application(messages).helloForm.bind(Map("name" -> "Bob", "repeat" -> "xx", "color" -> "red"))
       
       form.hasErrors must beTrue
       form.errors.size must equalTo(1)
@@ -67,7 +76,7 @@ class FormSpec extends Specification {
     }
     
     "be filled" in {
-      val form = helloForm.bind(Map("name" -> "Bob", "repeat" -> "10", "color" -> "red"))
+      val form = new Application(messages).helloForm.bind(Map("name" -> "Bob", "repeat" -> "10", "color" -> "red"))
       
       form.hasErrors must beFalse
       

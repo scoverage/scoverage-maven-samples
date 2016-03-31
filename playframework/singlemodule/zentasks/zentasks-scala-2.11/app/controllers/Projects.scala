@@ -5,15 +5,13 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
-import anorm._
-
 import models._
 import views._
 
 /**
  * Manage projects related operations.
  */
-object Projects extends Controller with Secured {
+class Projects extends Controller with Secured {
 
   /**
    * Display the dashboard.

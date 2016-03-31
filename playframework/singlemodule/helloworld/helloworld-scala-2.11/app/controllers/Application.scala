@@ -1,13 +1,16 @@
 package controllers
 
+import javax.inject._
+
 import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
+import play.api.i18n._
 
 import views._
 
-object Application extends Controller {
+class Application @Inject() (val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   /**
    * Describes the hello form.
