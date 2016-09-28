@@ -34,10 +34,10 @@ under the License.
         <play2.version>2.4.6</play2.version>
         <scala.version>2.10.6</scala.version>
 
-        <compiler.plugin.version>3.5</compiler.plugin.version>
-        <jar.plugin.version>2.6</jar.plugin.version>
-        <project-info-reports.plugin.version>2.8.1</project-info-reports.plugin.version>
-        <site.plugin.version>3.4</site.plugin.version>
+        <compiler.plugin.version>3.5.1</compiler.plugin.version>
+        <jar.plugin.version>3.0.2</jar.plugin.version>
+        <project-info-reports.plugin.version>2.9</project-info-reports.plugin.version>
+        <site.plugin.version>3.5.1</site.plugin.version>
         <surefire.plugin.version>2.19.1</surefire.plugin.version>
 
         <play2.plugin.version>1.0.0-beta5</play2.plugin.version>
