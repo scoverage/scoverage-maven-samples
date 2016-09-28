@@ -50,7 +50,7 @@ under the License.
 
         <anorm.version>2.4.0</anorm.version>
         <play2.version>2.4.6</play2.version>
-        <scala.version>2.11.7</scala.version>
+        <scala.version>2.11.8</scala.version>
 
         <jar.plugin.version>3.0.2</jar.plugin.version>
         <project-info-reports.plugin.version>2.9</project-info-reports.plugin.version>
