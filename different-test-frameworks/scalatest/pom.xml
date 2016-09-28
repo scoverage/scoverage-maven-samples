@@ -32,7 +32,7 @@ under the License.
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <scala.version>2.11.8</scala.version>
-        <sbt.version>0.13.5</sbt.version>
+        <sbt.version>0.13</sbt.version>
 
         <scalatest.version>2.1.7</scalatest.version>
 
