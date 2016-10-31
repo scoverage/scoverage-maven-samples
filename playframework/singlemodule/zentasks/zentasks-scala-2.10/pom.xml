@@ -28,8 +28,8 @@ under the License.
     <name>SCoverage Maven Samples : Play! Framework : SingleModule : Zentasks : Scala 2.10</name>
 
     <!--
-      'com.typesafe.play:play-specs2_2.11' depends on
-      'org.scalaz.stream:scalaz-stream_2.11:0.7a'
+      'com.typesafe.play:play-specs2_2.10' depends on
+      'org.scalaz.stream:scalaz-stream_2.10:0.7a'
       and this artifact is not available in Maven central repository yet,
       see https://github.com/scalaz/scalaz-stream/issues/258
     -->
