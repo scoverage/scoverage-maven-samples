@@ -35,8 +35,10 @@ under the License.
     <modules>
         <module>sbt-compiler-plugin-scala-2.10</module>
         <module>sbt-compiler-plugin-scala-2.11</module>
+        <module>sbt-compiler-plugin-scala-2.12</module>
         <module>scala-plugin-scala-2.10</module>
         <module>scala-plugin-scala-2.11</module>
+        <module>scala-plugin-scala-2.12</module>
     </modules>
 
 </project>
