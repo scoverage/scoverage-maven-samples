@@ -64,9 +64,6 @@ under the License.
                 <groupId>com.google.code.play2-maven-plugin</groupId>
                 <artifactId>play2-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <configuration>
-                    <routesGenerator>injected</routesGenerator>
-                </configuration>
             </plugin>
 
             <plugin>
