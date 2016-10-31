@@ -7,9 +7,9 @@ import play.api.test.Helpers._
 
 @RunWith(classOf[JUnitRunner])
 class IntegrationSpec extends Specification {
-  
+
   "Application" should {
-    
+
     "work from within a browser" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
         browser.goTo("http://localhost:3333/")
@@ -26,13 +26,14 @@ class IntegrationSpec extends Specification {
         browser.pageSource must not contain("Sign in")
         browser.pageSource must contain("guillaume@sample.com")
         browser.pageSource must contain("Logout")
-        
+
         val items = browser.$("li")
         items.size must equalTo(15)
         items.get(3).getText must contain("Website Delete")
       }
+
     }
-    
+
   }
-  
+
 }
