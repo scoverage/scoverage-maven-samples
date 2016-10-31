@@ -14,13 +14,9 @@ class IntegrationSpec extends Specification {
       running(TestServer(3333), HTMLUNIT) { browser =>
         browser.goTo("http://localhost:3333/")
         
-        /*browser.waitUntil[Boolean]{
-          browser.pageSource contains ("Hello world")
-        }*/
-
         browser.$("h1").first.getText must contain("Configure your 'Hello world':")
 
-        /*browser.$("#name").text("Bob")
+        browser.$("#name").text("Bob")
         browser.$("#submit").click()
         
         browser.$("dl.error").size must equalTo(1)
@@ -57,7 +53,7 @@ class IntegrationSpec extends Specification {
         
         browser.$("p.buttons a").click()
         
-        browser.$("h1").first.getText must equalTo("Configure your 'Hello world':")*/
+        browser.$("h1").first.getText must equalTo("Configure your 'Hello world':")
       }
     }
     
