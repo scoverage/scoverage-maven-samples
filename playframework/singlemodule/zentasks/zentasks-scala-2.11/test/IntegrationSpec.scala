@@ -10,9 +10,9 @@ class IntegrationSpec extends Specification {
 
   "Application" should {
 
-    "work from within a browser" in {
-      running(TestServer(3333), HTMLUNIT) { browser =>
-        browser.goTo("http://localhost:3333/")
+    "work from within a browser" in new WithBrowser {
+        browser.goTo("http://localhost:" + port)
+
         browser.$("header a").first.getText must equalTo("Zentasks")
         browser.$("#email").text("guillaume@sample.com")
         browser.$("#password").text("secret111")
@@ -30,8 +30,6 @@ class IntegrationSpec extends Specification {
         val items = browser.$("li")
         items.size must equalTo(15)
         items.get(3).getText must contain("Website Delete")
-      }
-
     }
 
   }
