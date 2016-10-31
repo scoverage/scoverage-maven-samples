@@ -1,7 +1,11 @@
 package models
 
+import java.sql.Connection
+
+import javax.inject.Inject
+import javax.inject.Singleton
+
 import play.api.db._
-import play.api.Play.current
 
 import anorm._
 import anorm.SqlParser._
@@ -10,8 +14,11 @@ import scala.language.postfixOps
 
 case class User(email: String, name: String, password: String)
 
-object User {
+@Singleton
+class UserService @Inject() (dbapi: DBApi) {
   
+  private val db = dbapi.database("default")
+
   // -- Parsers
   
   /**
@@ -31,10 +38,10 @@ object User {
    * Retrieve a User from email.
    */
   def findByEmail(email: String): Option[User] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("select * from user where email = {email}").on(
         "email" -> email
-      ).as(User.simple.singleOpt)
+      ).as(simple.singleOpt)
     }
   }
   
@@ -42,8 +49,8 @@ object User {
    * Retrieve all users.
    */
   def findAll: Seq[User] = {
-    DB.withConnection { implicit connection =>
-      SQL("select * from user").as(User.simple *)
+    db.withConnection { implicit connection =>
+      SQL("select * from user").as(simple *)
     }
   }
   
@@ -51,7 +58,7 @@ object User {
    * Authenticate a User.
    */
   def authenticate(email: String, password: String): Option[User] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
          select * from user where 
@@ -60,7 +67,7 @@ object User {
       ).on(
         "email" -> email,
         "password" -> password
-      ).as(User.simple.singleOpt)
+      ).as(simple.singleOpt)
     }
   }
    
@@ -68,7 +75,7 @@ object User {
    * Create a User.
    */
   def create(user: User): User = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           insert into user values (
@@ -82,7 +89,6 @@ object User {
       ).executeUpdate()
       
       user
-      
     }
   }
   

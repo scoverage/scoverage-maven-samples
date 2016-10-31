@@ -1,7 +1,11 @@
 package models
 
+import java.sql.Connection
+
+import javax.inject.Inject
+import javax.inject.Singleton
+
 import play.api.db._
-import play.api.Play.current
 
 import anorm._
 import anorm.SqlParser._
@@ -10,8 +14,11 @@ import scala.language.postfixOps
 
 case class Project(id: Option[Long], folder: String, name: String)
 
-object Project {
+@Singleton
+class ProjectService @Inject() (dbapi: DBApi, userService: UserService) {
   
+  private val db = dbapi.database("default")
+
   // -- Parsers
   
   /**
@@ -21,7 +28,7 @@ object Project {
     get[Option[Long]]("project.id") ~
     get[String]("project.folder") ~
     get[String]("project.name") map {
-      case id~folder~name => Project(id, folder, name)
+    case id~folder~name => Project(id, folder, name)
     }
   }
   
@@ -31,10 +38,10 @@ object Project {
    * Retrieve a Project from id.
    */
   def findById(id: Long): Option[Project] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("select * from project where id = {id}").on(
         "id" -> id
-      ).as(Project.simple.singleOpt)
+      ).as(simple.singleOpt)
     }
   }
   
@@ -42,7 +49,7 @@ object Project {
    * Retrieve project for user
    */
   def findInvolving(user: String): Seq[Project] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           select * from project 
@@ -51,7 +58,7 @@ object Project {
         """
       ).on(
         "email" -> user
-      ).as(Project.simple *)
+      ).as(simple *)
     }
   }
   
@@ -59,7 +66,7 @@ object Project {
    * Update a project.
    */
   def rename(id: Long, newName: String) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("update project set name = {name} where id = {id}").on(
         "id" -> id, "name" -> newName
       ).executeUpdate()
@@ -70,7 +77,7 @@ object Project {
    * Delete a project.
    */
   def delete(id: Long) {
-    DB.withConnection { implicit connection => 
+    db.withConnection { implicit connection =>
       SQL("delete from project where id = {id}").on(
         "id" -> id
       ).executeUpdate()
@@ -81,7 +88,7 @@ object Project {
    * Delete all project in a folder
    */
   def deleteInFolder(folder: String) {
-    DB.withConnection { implicit connection => 
+    db.withConnection { implicit connection =>
       SQL("delete from project where folder = {folder}").on(
         "folder" -> folder
       ).executeUpdate()
@@ -92,7 +99,7 @@ object Project {
    * Rename a folder
    */
   def renameFolder(folder: String, newName: String) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("update project set folder = {newName} where folder = {name}").on(
         "name" -> folder, "newName" -> newName
       ).executeUpdate()
@@ -103,7 +110,7 @@ object Project {
    * Retrieve project member
    */
   def membersOf(project: Long): Seq[User] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           select user.* from user 
@@ -112,7 +119,7 @@ object Project {
         """
       ).on(
         "project" -> project
-      ).as(User.simple *)
+      ).as(userService.simple *)
     }
   }
   
@@ -120,7 +127,7 @@ object Project {
    * Add a member to the project team.
    */
   def addMember(project: Long, user: String) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("insert into project_member values({project}, {user})").on(
         "project" -> project,
         "user" -> user
@@ -132,7 +139,7 @@ object Project {
    * Remove a member from the project team.
    */
   def removeMember(project: Long, user: String) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("delete from project_member where project_id = {project} and user_email = {user}").on(
         "project" -> project,
         "user" -> user
@@ -144,7 +151,7 @@ object Project {
    * Check if a user is a member of this project
    */
   def isMember(project: Long, user: String): Boolean = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           select count(user.email) = 1 from user 
@@ -162,7 +169,7 @@ object Project {
    * Create a Project.
    */
   def create(project: Project, members: Seq[String]): Project = {
-     DB.withTransaction { implicit connection =>
+     db.withTransaction { implicit connection =>
        
        // Get the project id
        val id: Long = project.id.getOrElse {
@@ -188,7 +195,6 @@ object Project {
        }
        
        project.copy(id = Some(id))
-       
      }
   }
   

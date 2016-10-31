@@ -1,9 +1,12 @@
 package models
 
-import java.util.{Date}
+import java.sql.Connection
+import java.util.Date
+
+import javax.inject.Inject
+import javax.inject.Singleton
 
 import play.api.db._
-import play.api.Play.current
 
 import anorm._
 import anorm.SqlParser._
@@ -12,8 +15,11 @@ import scala.language.postfixOps
 
 case class Task(id: Option[Long], folder: String, project: Long, title: String, done: Boolean, dueDate: Option[Date], assignedTo: Option[String])
 
-object Task {
+@Singleton
+class TaskService @Inject() (dbapi: DBApi, projectService: ProjectService) {
   
+  private val db = dbapi.database("default")
+
   // -- Parsers
   
   /**
@@ -39,10 +45,10 @@ object Task {
    * Retrieve a Task from the id.
    */
   def findById(id: Long): Option[Task] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("select * from task where id = {id}").on(
         "id" -> id
-      ).as(Task.simple.singleOpt)
+      ).as(simple.singleOpt)
     }
   }
   
@@ -50,7 +56,7 @@ object Task {
    * Retrieve todo tasks for the user.
    */
   def findTodoInvolving(user: String): Seq[(Task,Project)] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           select * from task 
@@ -60,7 +66,7 @@ object Task {
         """
       ).on(
         "email" -> user
-      ).as(Task.simple ~ Project.simple map {
+      ).as(simple ~ projectService.simple map {
         case task~project => task -> project
       } *)
     }
@@ -70,7 +76,7 @@ object Task {
    * Find tasks related to a project
    */
   def findByProject(project: Long): Seq[Task] = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           select * from task 
@@ -78,7 +84,7 @@ object Task {
         """
       ).on(
         "project" -> project
-      ).as(Task.simple *)
+      ).as(simple *)
     }
   }
 
@@ -86,7 +92,7 @@ object Task {
    * Delete a task
    */
   def delete(id: Long) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("delete from task where id = {id}").on(
         "id" -> id
       ).executeUpdate()
@@ -97,7 +103,7 @@ object Task {
    * Delete all task in a folder.
    */
   def deleteInFolder(projectId: Long, folder: String) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("delete from task where project = {project} and folder = {folder}").on(
         "project" -> projectId, "folder" -> folder
       ).executeUpdate()
@@ -108,7 +114,7 @@ object Task {
    * Mark a task as done or not
    */
   def markAsDone(taskId: Long, done: Boolean) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("update task set done = {done} where id = {id}").on(
         "id" -> taskId,
         "done" -> done
@@ -120,7 +126,7 @@ object Task {
    * Rename a folder.
    */
   def renameFolder(projectId: Long, folder: String, newName: String) {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL("update task set folder = {newName} where folder = {name} and project = {project}").on(
         "project" -> projectId, "name" -> folder, "newName" -> newName
       ).executeUpdate()
@@ -131,7 +137,7 @@ object Task {
    * Check if a user is the owner of this task
    */
   def isOwner(task: Long, user: String): Boolean = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       SQL(
         """
           select count(task.id) = 1 from task 
@@ -150,7 +156,7 @@ object Task {
    * Create a Task.
    */
   def create(task: Task): Task = {
-    DB.withConnection { implicit connection =>
+    db.withConnection { implicit connection =>
       
       // Get the task id
       val id: Long = task.id.getOrElse {
@@ -174,7 +180,6 @@ object Task {
       ).executeUpdate()
       
       task.copy(id = Some(id))
-      
     }
   }
   

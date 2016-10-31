@@ -1,34 +1,38 @@
-import play.api._
+import javax.inject._
+
+import com.google.inject.AbstractModule
+import play.api.db._
 
 import models._
 import anorm._
 
-object Global extends GlobalSettings {
-  
-  override def onStart(app: Application) {
-    InitialData.insert()
+@Singleton
+class InitialDataModule extends AbstractModule {
+
+  override def configure(): Unit = {
+    bind(classOf[InitialData]).asEagerSingleton
   }
-  
 }
 
 /**
  * Initial set of data to be imported 
  * in the sample application.
  */
-object InitialData {
+class InitialData @Inject() (/*val db: DBApi*/
+                             projectService: ProjectService,
+                             taskService: TaskService,
+                             userService: UserService) {
   
   def date(str: String) = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(str)
-  
-  def insert() = {
-    
-    if(User.findAll.isEmpty) {
+
+    if(userService.findAll.isEmpty) {
       
       Seq(
         User("guillaume@sample.com", "Guillaume Bort", "secret"),
         User("maxime@sample.com", "Maxime Dantec", "secret"),
         User("sadek@sample.com", "Sadek Drobi", "secret"),
         User("erwan@sample.com", "Erwan Loisant", "secret")
-      ).foreach(User.create)
+      ).foreach(userService.create)
       
       Seq(
         Project(Some(1), "Play framework", "Play 2.0") -> Seq("guillaume@sample.com", "maxime@sample.com", "sadek@sample.com", "erwan@sample.com"),
@@ -43,7 +47,7 @@ object InitialData {
         Project(Some(10), "Personal", "Private") -> Seq("erwan@sample.com"),
         Project(Some(11), "Personal", "Private") -> Seq("sadek@sample.com")
       ).foreach {
-        case (project,members) => Project.create(project, members)
+        case (project,members) => projectService.create(project, members)
       }
       
       Seq(
@@ -53,10 +57,7 @@ object InitialData {
         Task(None, "Todo", 2, "Check 1.2.4-RC2", false, Some(date("2011-11-18")), Some("guillaume@sample.com")),
         Task(None, "Todo", 7, "Finish zentask integration", true, Some(date("2011-11-15")), Some("maxime@sample.com")),
         Task(None, "Todo", 4, "Release the secret project", false, Some(date("2012-01-01")), Some("sadek@sample.com"))
-      ).foreach(Task.create)
+      ).foreach(taskService.create)
       
     }
-    
-  }
-  
 }

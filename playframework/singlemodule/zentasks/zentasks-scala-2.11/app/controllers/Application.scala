@@ -1,14 +1,17 @@
 package controllers
 
+import javax.inject.Inject
+
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
+import play.api.db._
 import play.api.routing._
 
 import models._
 import views._
 
-class Application extends Controller {
+class Application @Inject() (val userService: UserService) extends Controller {
 
   // -- Authentication
 
@@ -17,7 +20,7 @@ class Application extends Controller {
       "email" -> text,
       "password" -> text
     ) verifying ("Invalid email or password", result => result match {
-      case (email, password) => User.authenticate(email, password).isDefined
+      case (email, password) => userService.authenticate(email, password).isDefined
     })
   )
 
@@ -68,7 +71,11 @@ class Application extends Controller {
  * Provide security features
  */
 trait Secured {
-  
+
+  val projectService: ProjectService
+
+  val taskService: TaskService
+
   /**
    * Retrieve the connected user email.
    */
@@ -92,7 +99,7 @@ trait Secured {
    * Check if the connected user is a member of this project.
    */
   def IsMemberOf(project: Long)(f: => String => Request[AnyContent] => Result) = IsAuthenticated { user => request =>
-    if(Project.isMember(project, user)) {
+    if(projectService.isMember(project, user)) {
       f(user)(request)
     } else {
       Results.Forbidden
@@ -103,7 +110,7 @@ trait Secured {
    * Check if the connected user is a owner of this task.
    */
   def IsOwnerOf(task: Long)(f: => String => Request[AnyContent] => Result) = IsAuthenticated { user => request =>
-    if(Task.isOwner(task, user)) {
+    if(taskService.isOwner(task, user)) {
       f(user)(request)
     } else {
       Results.Forbidden

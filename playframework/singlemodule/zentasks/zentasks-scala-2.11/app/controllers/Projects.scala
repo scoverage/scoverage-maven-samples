@@ -1,9 +1,12 @@
 package controllers
 
+import javax.inject.Inject
+
 import play.api._
-import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
+import play.api.db._
+import play.api.mvc._
 
 import models._
 import views._
@@ -11,17 +14,19 @@ import views._
 /**
  * Manage projects related operations.
  */
-class Projects extends Controller with Secured {
+class Projects @Inject() (val projectService: ProjectService,
+                          val taskService: TaskService,
+                          val userService: UserService) extends Controller with Secured {
 
   /**
    * Display the dashboard.
    */
   def index = IsAuthenticated { username => _ =>
-    User.findByEmail(username).map { user =>
+    userService.findByEmail(username).map { user =>
       Ok(
         html.dashboard(
-          Project.findInvolving(username), 
-          Task.findTodoInvolving(username), 
+          projectService.findInvolving(username), 
+          taskService.findTodoInvolving(username), 
           user
         )
       )
@@ -38,7 +43,7 @@ class Projects extends Controller with Secured {
       errors => BadRequest,
       folder => Ok(
         views.html.projects.item(
-          Project.create(
+          projectService.create(
             Project(None, folder, "New project"), 
             Seq(username)
           )
@@ -51,7 +56,7 @@ class Projects extends Controller with Secured {
    * Delete a project.
    */
   def delete(project: Long) = IsMemberOf(project) { username => _ =>
-    Project.delete(project)
+    projectService.delete(project)
     Ok
   }
 
@@ -62,7 +67,7 @@ class Projects extends Controller with Secured {
     Form("name" -> nonEmptyText).bindFromRequest.fold(
       errors => BadRequest,
       newName => { 
-        Project.rename(project, newName) 
+        projectService.rename(project, newName) 
         Ok(newName) 
       }
     )
@@ -81,7 +86,7 @@ class Projects extends Controller with Secured {
    * Delete a project group.
    */
   def deleteGroup(folder: String) = IsAuthenticated { _ => _ =>
-    Project.deleteInFolder(folder)
+    projectService.deleteInFolder(folder)
     Ok
   }
 
@@ -91,7 +96,7 @@ class Projects extends Controller with Secured {
   def renameGroup(folder: String) = IsAuthenticated { _ => implicit request =>
     Form("name" -> nonEmptyText).bindFromRequest.fold(
       errors => BadRequest,
-      newName => { Project.renameFolder(folder, newName); Ok(newName) }
+      newName => { projectService.renameFolder(folder, newName); Ok(newName) }
     )
   }
 
@@ -103,7 +108,7 @@ class Projects extends Controller with Secured {
   def addUser(project: Long) = IsMemberOf(project) { _ => implicit request =>
     Form("user" -> nonEmptyText).bindFromRequest.fold(
       errors => BadRequest,
-      user => { Project.addMember(project, user); Ok }
+      user => { projectService.addMember(project, user); Ok }
     )
   }
 
@@ -113,7 +118,7 @@ class Projects extends Controller with Secured {
   def removeUser(project: Long) = IsMemberOf(project) { _ => implicit request =>
     Form("user" -> nonEmptyText).bindFromRequest.fold(
       errors => BadRequest,
-      user => { Project.removeMember(project, user); Ok }
+      user => { projectService.removeMember(project, user); Ok }
     )
   }
 

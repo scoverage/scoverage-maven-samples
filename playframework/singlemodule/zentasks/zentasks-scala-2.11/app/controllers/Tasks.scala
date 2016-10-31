@@ -1,11 +1,12 @@
 package controllers
 
+import javax.inject.Inject
+
 import play.api._
-import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-
-import java.util.{Date}
+import play.api.db._
+import play.api.mvc._
 
 import models._
 import views._
@@ -13,16 +14,18 @@ import views._
 /**
  * Manage tasks related operations.
  */
-class Tasks extends Controller with Secured {
+class Tasks @Inject() (val projectService: ProjectService,
+                       val taskService: TaskService,
+                       val userService: UserService) extends Controller with Secured {
 
   /**
    * Display the tasks panel for this project.
    */
   def index(project: Long) = IsMemberOf(project) { _ => implicit request =>
-    Project.findById(project).map { p =>
-      val tasks = Task.findByProject(project)
-      val team = Project.membersOf(project)
-      Ok(html.tasks.index(p, tasks, team))
+    projectService.findById(project).map { p =>
+      val tasks = taskService.findByProject(project)
+      val team = projectService.membersOf(project)
+      Ok(html.tasks.index(p, tasks, team, userService))
     }.getOrElse(NotFound)
   }
 
@@ -44,7 +47,7 @@ class Tasks extends Controller with Secured {
       errors => BadRequest,
       {
         case (title, dueDate, assignedTo) => 
-          val task =  Task.create(
+          val task = taskService.create(
             Task(None, folder, project, title, false, dueDate, assignedTo)
           )
           Ok(html.tasks.item(task))
@@ -59,7 +62,7 @@ class Tasks extends Controller with Secured {
     Form("done" -> boolean).bindFromRequest.fold(
       errors => BadRequest,
       isDone => { 
-        Task.markAsDone(task, isDone)
+        taskService.markAsDone(task, isDone)
         Ok 
       }
     )
@@ -69,7 +72,7 @@ class Tasks extends Controller with Secured {
    * Delete a task
    */
   def delete(task: Long) = IsOwnerOf(task) { _ => implicit request =>
-    Task.delete(task)
+    taskService.delete(task)
     Ok
   }
 
@@ -86,7 +89,7 @@ class Tasks extends Controller with Secured {
    * Delete a full tasks folder.
    */
   def deleteFolder(project: Long, folder: String) = IsMemberOf(project) { _ => implicit request =>
-    Task.deleteInFolder(project, folder)
+    taskService.deleteInFolder(project, folder)
     Ok
   }
 
@@ -97,7 +100,7 @@ class Tasks extends Controller with Secured {
     Form("name" -> nonEmptyText).bindFromRequest.fold(
       errors => BadRequest,
       newName => { 
-        Task.renameFolder(project, folder, newName) 
+        taskService.renameFolder(project, folder, newName) 
         Ok(newName) 
       }
     )
