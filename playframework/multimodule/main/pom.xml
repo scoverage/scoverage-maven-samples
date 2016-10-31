@@ -32,23 +32,6 @@ under the License.
 
     <name>SCoverage Maven Samples : Play! Framework : MultiModule : Main</name>
 
-    <!--
-      'com.typesafe.play:play-specs2_2.11' depends on
-      'org.scalaz.stream:scalaz-stream_2.11:0.7a'
-      and this artifact is not available in Maven central repository yet,
-      see https://github.com/scalaz/scalaz-stream/issues/258
-    -->
-    <repositories>
-        <repository>
-            <id>scalaz-bintray</id>
-            <name>Scalaz Bintray - releases</name>
-            <url>https://dl.bintray.com/scalaz/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -58,7 +41,7 @@ under the License.
 
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play_2.10</artifactId>
+            <artifactId>play_2.11</artifactId>
             <version>${play2.version}</version>
         </dependency>
 
@@ -77,14 +60,21 @@ under the License.
 
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play-netty-server_2.10</artifactId>
+            <artifactId>play-logback_2.11</artifactId>
             <version>${play2.version}</version>
             <scope>runtime</scope>
         </dependency>
 
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play-specs2_2.10</artifactId>
+            <artifactId>play-netty-server_2.11</artifactId>
+            <version>${play2.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-specs2_2.11</artifactId>
             <version>${play2.version}</version>
             <scope>test</scope>
         </dependency>
@@ -108,9 +98,6 @@ under the License.
                 <groupId>com.google.code.play2-maven-plugin</groupId>
                 <artifactId>play2-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <configuration>
-                    <routesGenerator>injected</routesGenerator>
-                </configuration>
             </plugin>
 
             <plugin>
