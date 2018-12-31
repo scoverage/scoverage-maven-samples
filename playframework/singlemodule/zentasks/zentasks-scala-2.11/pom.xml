@@ -31,8 +31,8 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <anorm.version>2.5.2</anorm.version>
-        <play2.version>2.5.9</play2.version>
+        <anorm.version>2.5.3</anorm.version>
+        <play2.version>2.5.19</play2.version>
         <scala.version>2.11.8</scala.version>
 
         <jar.plugin.version>3.0.2</jar.plugin.version>
