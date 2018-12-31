@@ -31,7 +31,7 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.11.12</scala.version>
         <sbt.version>0.13</sbt.version>
 
         <junit.version>4.12</junit.version>
