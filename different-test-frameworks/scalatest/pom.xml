@@ -36,10 +36,10 @@ under the License.
 
         <scalatest.version>2.1.7</scalatest.version>
 
-        <compiler.plugin.version>3.5.1</compiler.plugin.version>
-        <project-info-reports.plugin.version>2.9</project-info-reports.plugin.version>
-        <site.plugin.version>3.5.1</site.plugin.version>
-        <surefire.plugin.version>2.19.1</surefire.plugin.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <project-info-reports.plugin.version>3.0.0</project-info-reports.plugin.version>
+        <site.plugin.version>3.7.1</site.plugin.version>
+        <surefire.plugin.version>2.22.1</surefire.plugin.version>
 
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
         <scalatest.plugin.version>1.0</scalatest.plugin.version>

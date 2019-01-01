@@ -41,7 +41,7 @@ under the License.
 
     <properties>
         <release.plugin.version>2.5.3</release.plugin.version>
-        <site.plugin.version>3.5.1</site.plugin.version>
+        <site.plugin.version>3.7.1</site.plugin.version>
 
         <play2.plugin.version>1.0.0-rc4</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
