@@ -40,7 +40,7 @@ under the License.
         <site.plugin.version>3.7.1</site.plugin.version>
         <surefire.plugin.version>2.22.1</surefire.plugin.version>
 
-        <scala.plugin.version>3.2.2</scala.plugin.version>
+        <scala.plugin.version>4.0.1</scala.plugin.version>
         <scoverage.plugin.version>1.4.0-RC1</scoverage.plugin.version>
     </properties>
 
