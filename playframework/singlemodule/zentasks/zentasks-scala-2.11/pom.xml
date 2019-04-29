@@ -42,7 +42,7 @@ under the License.
 
         <play2.plugin.version>1.0.0-rc5</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.4.0-M5</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.0-RC1</scoverage.plugin.version>
     </properties>
 
     <dependencies>
