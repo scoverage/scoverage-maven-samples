@@ -43,7 +43,7 @@ under the License.
 
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
         <scalatest.plugin.version>1.0</scalatest.plugin.version>
-        <scoverage.plugin.version>1.4.0-RC1</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.0</scoverage.plugin.version>
     </properties>
 
     <dependencies>
