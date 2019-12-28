@@ -161,7 +161,6 @@ under the License.
                         <!-- uncomment if you don't want templates coverage
                         <excludedPackages>views.html.*</excludedPackages> -->
                         <excludedFiles>.*?routes_(routing|reverseRouting)</excludedFiles>
-                        <highlighting>true</highlighting>
                     </configuration>
                 </plugin>
             </plugins>

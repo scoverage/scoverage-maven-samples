@@ -119,9 +119,6 @@ under the License.
                 <groupId>org.scoverage</groupId>
                 <artifactId>scoverage-maven-plugin</artifactId>
                 <version>${scoverage.plugin.version}</version>
-                <configuration>
-                    <highlighting>true</highlighting>
-                </configuration>
             </plugin>
         </plugins>
 

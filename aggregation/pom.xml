@@ -106,7 +106,6 @@ under the License.
                 <version>${scoverage.plugin.version}</version>
                 <configuration>
                     <aggregate>true</aggregate> <!-- for aggregated report -->
-                    <highlighting>true</highlighting>
                 </configuration>
             </plugin>
         </plugins>
@@ -143,7 +142,6 @@ under the License.
                 <version>${scoverage.plugin.version}</version>
                 <configuration>
                     <aggregate>true</aggregate> <!-- for aggregated report -->
-                    <highlighting>true</highlighting>
                 </configuration>
                 <reportSets>
                     <reportSet>
