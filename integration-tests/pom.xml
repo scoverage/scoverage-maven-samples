@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples</groupId>
     <artifactId>integration-tests</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SCoverage Maven Samples : Integration Tests</name>
