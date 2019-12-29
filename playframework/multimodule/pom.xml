@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.play</groupId>
     <artifactId>multimodule</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>SCoverage Maven Samples : Play! Framework : MultiModule</name>
