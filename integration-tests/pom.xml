@@ -41,7 +41,7 @@ under the License.
         <surefire.plugin.version>2.22.1</surefire.plugin.version>
 
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.4.0</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.1</scoverage.plugin.version>
     </properties>
 
     <dependencies>
