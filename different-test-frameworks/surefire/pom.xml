@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.different-test-frameworks</groupId>
     <artifactId>surefire</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SCoverage Maven Samples : Different Test Frameworks : Surefire</name>
@@ -43,7 +43,7 @@ under the License.
         <surefire.plugin.version>2.22.1</surefire.plugin.version>
 
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.4.1</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.11-SNAPSHOT</scoverage.plugin.version>
     </properties>
 
     <dependencies>

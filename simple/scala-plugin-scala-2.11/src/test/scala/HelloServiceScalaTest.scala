@@ -6,9 +6,6 @@ import org.junit.Assert.assertEquals
 class HelloServiceScalaTest
 {
     @Test
-    def test1()
-    {
-        assertEquals("Hello", HelloServiceScala.hello)
-    }
+    def test1() = assertEquals("Hello", HelloServiceScala.hello)
 
 }

@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.different-test-frameworks</groupId>
     <artifactId>scecs2</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SCoverage Maven Samples : Different Test Frameworks : Specs2</name>
@@ -44,7 +44,7 @@ under the License.
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
         <specs2.plugin.version>0.4.4</specs2.plugin.version>
 
-        <scoverage.plugin.version>1.4.1</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.11-SNAPSHOT</scoverage.plugin.version>
     </properties>
 
     <dependencies>
@@ -104,6 +104,20 @@ under the License.
                 <groupId>com.mmakowski</groupId>
                 <artifactId>specs2-maven-plugin</artifactId>
                 <version>${specs2.plugin.version}</version>
+                <!-- Override dependencies in order to avoid an error in https://repo.maven.apache.org/maven2/com/github/scala-incubator/io/scala-io-file_2.11/0.4.3/scala-io-file_2.11-0.4.3.pom -->
+                <!-- (org.scala-lang.modules:scala-parser-combinators_2.11 depenedncy defined twice with different versions, version 1.0.0 does not exist in the repository) -->
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.scala-incubator.io</groupId>
+                        <artifactId>scala-io-core_2.11</artifactId>
+                        <version>0.4.3-1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.github.scala-incubator.io</groupId>
+                        <artifactId>scala-io-file_2.11</artifactId>
+                        <version>0.4.3-1</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>test</id>

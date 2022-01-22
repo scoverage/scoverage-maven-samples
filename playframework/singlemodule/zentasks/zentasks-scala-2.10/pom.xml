@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.play.singlemodule.zentasks</groupId>
     <artifactId>zentasks-scala-2.10</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.11-SNAPSHOT</version>
     <packaging>play2</packaging>
 
     <name>SCoverage Maven Samples : Play! Framework : SingleModule : Zentasks : Scala 2.10</name>
@@ -59,7 +59,7 @@ under the License.
 
         <play2.plugin.version>1.0.0-rc5</play2.plugin.version>
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.4.1</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.11-SNAPSHOT</scoverage.plugin.version>
     </properties>
 
     <dependencies>
@@ -190,6 +190,7 @@ under the License.
                     <artifactId>scoverage-maven-plugin</artifactId>
                     <version>${scoverage.plugin.version}</version>
                     <configuration>
+                        <scalacPluginVersion>1.4.1</scalacPluginVersion> <!-- latest plugin version supporting Scala 2.10 -->
                         <!-- uncomment if you don't want templates coverage
                         <excludedPackages>views.html.*</excludedPackages> -->
                         <excludedFiles>.*?routes_(routing|reverseRouting)</excludedFiles>

@@ -22,7 +22,7 @@ under the License.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.simple</groupId>
     <artifactId>sbt-compiler-plugin-scala-2.12</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SCoverage Maven Samples : Simple : using SBT Compiler Maven Plugin and Scala 2.12</name>
@@ -31,7 +31,7 @@ under the License.
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <scala.version>2.12.8</scala.version>
+        <scala.version>2.12.15</scala.version>
         <sbt.version>0.13</sbt.version>
 
         <junit.version>4.12</junit.version>
@@ -42,7 +42,7 @@ under the License.
         <surefire.plugin.version>2.22.1</surefire.plugin.version>
 
         <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
-        <scoverage.plugin.version>1.4.1</scoverage.plugin.version>
+        <scoverage.plugin.version>1.4.11-SNAPSHOT</scoverage.plugin.version>
     </properties>
 
     <dependencies>

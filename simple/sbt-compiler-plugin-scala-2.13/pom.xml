@@ -21,17 +21,18 @@ under the License.
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.scoverage.scoverage-maven-samples.simple</groupId>
-    <artifactId>scala-plugin-scala-2.13</artifactId>
+    <artifactId>sbt-compiler-plugin-scala-2.13</artifactId>
     <version>1.4.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>SCoverage Maven Samples : Simple : using Scala Maven Plugin and Scala 2.13</name>
+    <name>SCoverage Maven Samples : Simple : using SBT Compiler Maven Plugin and Scala 2.13</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <scala.version>2.13.8</scala.version>
+        <sbt.version>0.13</sbt.version>
 
         <junit.version>4.12</junit.version>
 
@@ -40,7 +41,7 @@ under the License.
         <site.plugin.version>3.7.1</site.plugin.version>
         <surefire.plugin.version>2.22.1</surefire.plugin.version>
 
-        <scala.plugin.version>3.2.2</scala.plugin.version>
+        <sbt-compiler.plugin.version>1.0.0</sbt-compiler.plugin.version>
         <scoverage.plugin.version>1.4.11-SNAPSHOT</scoverage.plugin.version>
     </properties>
 
@@ -81,9 +82,9 @@ under the License.
             </plugin>
 
             <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>${scala.plugin.version}</version>
+                <groupId>com.google.code.sbt-compiler-maven-plugin</groupId>
+                <artifactId>sbt-compiler-maven-plugin</artifactId>
+                <version>${sbt-compiler.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-sbt-compile</id>

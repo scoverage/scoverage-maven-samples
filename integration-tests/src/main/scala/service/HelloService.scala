@@ -4,12 +4,12 @@ object HelloService
 {
   def hello =
   {
-    "Hello"  // tested by unit test
+    "Hello"  // covered by unit test
   }
 
   def hello2 =
   {
-    "Hello2"  // tested by integration test
+    "Hello2"  // covered by integration test
   }
 
 }
