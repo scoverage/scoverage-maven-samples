@@ -33,7 +33,7 @@ under the License.
 
         <scala.version>2.12.15</scala.version>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
 
         <compiler.plugin.version>3.8.0</compiler.plugin.version>
         <project-info-reports.plugin.version>3.0.0</project-info-reports.plugin.version>
